@@ -1,0 +1,97 @@
+[
+  {
+    "id": "wheat",
+    "name_ar": "القمح",
+    "name_en": "Wheat",
+    "icon": "🌾",
+    "family": "Poaceae (نجيليات)",
+    "season": "Winter",
+    "water_need": "Medium",
+    "nitrogen_role": "Heavy Consumer",
+    "optimal_temp": {"min": 15.0, "max": 25.0},
+    "optimal_humidity": {"min": 40.0, "max": 70.0},
+    "soil_moisture_min": 0.20,
+    "bad_preceding_families": ["Poaceae"],
+    "recommended_next_crops": ["faba_bean", "clover"],
+    "voice_dialogue": {
+      "suitable": "أهلاً بك يا عزيزي المزارع في تيرا سبيس! أنا القمح، جو أرضك ممتاز ورطوبة التربة ممتازة بحسب أقمار ناسا الصناعية. يلا جهز أرضك وتوكل على الله!",
+      "unsuitable": "يا عزيزي المزارع الجو عندك حر والتربة مجهدة من زراعة النجيليات ورا بعض، محتاج نريح الأرض بمحصول بقولي الأول."
+    }
+  },
+  {
+    "id": "faba_bean",
+    "name_ar": "الفول البلدي",
+    "name_en": "Faba Bean",
+    "icon": "🌱",
+    "family": "Fabaceae (بقوليات)",
+    "season": "Winter",
+    "water_need": "Low-Medium",
+    "nitrogen_role": "Nitrogen Fixer (مُثبت للنيتروجين)",
+    "optimal_temp": {"min": 14.0, "max": 24.0},
+    "optimal_humidity": {"min": 45.0, "max": 75.0},
+    "soil_moisture_min": 0.18,
+    "bad_preceding_families": ["Fabaceae"],
+    "recommended_next_crops": ["maize", "tomato"],
+    "voice_dialogue": {
+      "suitable": "أهلاً يا أخي المزارع، أنا الفول البلدي! هغذي تربتك بالنيتروجين الطبيعي وأصلح اللي استنزفه المحصول اللي فات، وترشيد مية ممتاز!",
+      "unsuitable": "يا عزيزي المزارع التربة رطبة زيادة عن اللزوم ومكتومة، محتاجين تصريف كويس للمية قبل ما تحط البذور."
+    }
+  },
+  {
+    "id": "maize",
+    "name_ar": "الذرة الشامية",
+    "name_en": "Maize",
+    "icon": "🌽",
+    "family": "Poaceae (نجيليات)",
+    "season": "Summer",
+    "water_need": "High",
+    "nitrogen_role": "Heavy Consumer",
+    "optimal_temp": {"min": 22.0, "max": 33.0},
+    "optimal_humidity": {"min": 50.0, "max": 80.0},
+    "soil_moisture_min": 0.22,
+    "bad_preceding_families": ["Poaceae"],
+    "recommended_next_crops": ["clover", "faba_bean"],
+    "voice_dialogue": {
+      "suitable": "أهلاً يا أخي المزارع، أنا عود الذرة البطل! بحب شمس أرضك ودفاها، بس خد بالك هحتاج ري منتظم عشان أطلع كيزان مليانة.",
+      "unsuitable": "يا عزيزي المزارع الجو لسه برد والتربة مش دافية، استنى لما الصيف يدخل عشان البذور متعفنش."
+    }
+  },
+  {
+    "id": "tomato",
+    "name_ar": "الطماطم",
+    "name_en": "Tomato",
+    "icon": "🍅",
+    "family": "Solanaceae (باذنجانيات)",
+    "season": "Fall/Spring",
+    "water_need": "High",
+    "nitrogen_role": "Heavy Feeder",
+    "optimal_temp": {"min": 18.0, "max": 29.0},
+    "optimal_humidity": {"min": 55.0, "max": 80.0},
+    "soil_moisture_min": 0.25,
+    "bad_preceding_families": ["Solanaceae"],
+    "recommended_next_crops": ["maize", "faba_bean"],
+    "voice_dialogue": {
+      "suitable": "يا مرحب بك يا أخي المزارع! أنا حبة الطماطم، الحرارة ورطوبة أرضك ممتازة، ازرعني وتابع معايا الري أول بأول بالأقمار الصناعية!",
+      "unsuitable": "يا عزيزي المزارع الأرض دي كان مزروع فيها باذنجانيات قريبة مني، في خطر فطريات وآفات مشتركة، بلاش تغامر!"
+    }
+  },
+  {
+    "id": "clover",
+    "name_ar": "البرسيم",
+    "name_en": "Clover",
+    "icon": "☘️",
+    "family": "Fabaceae (بقوليات)",
+    "season": "Winter",
+    "water_need": "Medium",
+    "nitrogen_role": "Super Nitrogen Restorer",
+    "optimal_temp": {"min": 12.0, "max": 22.0},
+    "optimal_humidity": {"min": 50.0, "max": 80.0},
+    "soil_moisture_min": 0.20,
+    "bad_preceding_families": ["Fabaceae"],
+    "recommended_next_crops": ["wheat", "maize"],
+    "voice_dialogue": {
+      "suitable": "أهلاً بك يا أخي المزارع، أنا البرسيم رفيق الأرض ومجدد نشاطها! هخلي تربتك غنية وخضرا وجاهزة لأي محصول بعدي.",
+      "unsuitable": "يا عزيزي المزارع الحرارة عالية زيادة، أنا محتاج جو خريفي وشتوي لطيف."
+    }
+  }
+]

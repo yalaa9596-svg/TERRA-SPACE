@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Terra Space — Project Documentation (Team NOVERA)</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 16mm 16mm 16mm 16mm;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #1f2933;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    font-size: 11pt;
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: linear-gradient(135deg, #0E5B1C, #1B5E20);
+    color: #ffffff;
+    padding: 18px 22px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+  }
+  .header img {
+    width: 68px;
+    height: 68px;
+    border-radius: 14px;
+    border: 2px solid rgba(255,255,255,0.4);
+    background: #0E5B1C;
+  }
+  .header h1 {
+    margin: 0 0 4px 0;
+    font-size: 20pt;
+    letter-spacing: 0.3px;
+  }
+  .header .meta {
+    font-size: 9.5pt;
+    opacity: 0.92;
+  }
+  .badge {
+    display: inline-block;
+    background: #fbbf24;
+    color: #0e3e12;
+    font-weight: 700;
+    font-size: 8.5pt;
+    padding: 2px 9px;
+    border-radius: 999px;
+    margin-top: 4px;
+  }
+  h2 {
+    color: #1B5E20;
+    font-size: 13.5pt;
+    border-bottom: 2px solid #d1fae5;
+    padding-bottom: 4px;
+    margin: 16px 0 8px 0;
+    page-break-after: avoid;
+  }
+  h3 {
+    color: #0d47a1;
+    font-size: 11pt;
+    margin: 10px 0 4px 0;
+  }
+  p { margin: 0 0 8px 0; }
+  ul { margin: 4px 0 10px 0; padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 12px 0;
+    font-size: 9.5pt;
+  }
+  tr, .box, .warn {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .page-break {
+    break-before: page;
+    page-break-before: always;
+    margin-top: 0;
+  }
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #ecfdf5;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .box {
+    background: #f8fafc;
+    border-left: 4px solid #1B5E20;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin: 8px 0 12px 0;
+  }
+  .warn {
+    background: #fffbeb;
+    border-left: 4px solid #d97706;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin: 8px 0 12px 0;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  code {
+    background: #f1f5f9;
+    padding: 1px 4px;
+    border-radius: 4px;
+    font-size: 9pt;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <img src="terra_logo.png" alt="Terra Space Logo">
+  <div>
+    <h1>Terra Space</h1>
+    <div class="meta">
+      <strong>Team Name:</strong> NOVERA &nbsp;|&nbsp;
+      <strong>Event:</strong> NASA Space Apps Cairo 2026<br>
+      <strong>Selected Challenge:</strong> Field Shift: Adapting Farms with NASA<br>
+      <strong>Team Members:</strong> [INSERT TEAM MEMBERS' FULL NAMES HERE]
+    </div>
+    <span class="badge">Cross-Platform: Android APK &amp; Web + FastAPI NASA/AI Backend</span>
+  </div>
+</div>
+
+<h2>1. High-Level Project Summary</h2>
+<div class="box">
+  <p>
+    <strong>Terra Space</strong> is a bilingual (Egyptian Arabic &amp; Global English) mobile and web precision-agriculture
+    platform built by Team <strong>NOVERA</strong> for the <em>Field Shift: Adapting Farms with NASA</em> challenge.
+    Smallholder farmers often suffer preventable crop loss from ill-timed irrigation during extreme weather shifts,
+    botanical-family rotation conflicts, and delayed diagnosis of plant diseases. Terra Space integrates live
+    <strong>NASA POWER</strong> agroclimatology telemetry, <strong>Open-Meteo</strong> 48–72h forecasts,
+    <strong>PlantDoc</strong> visual disease triage, GPS distance matching to the nearest agricultural engineer, and a
+    voice-first AI advisor—empowering farmers everywhere to adapt fields quickly and connect with local specialists.
+  </p>
+</div>
+
+<h2>2. Detailed Project Description</h2>
+
+<h3>What It Does &amp; How It Works</h3>
+<ul>
+  <li><strong>NASA 5-State Irrigation Advisor:</strong> Evaluates real-time satellite climate indicators and root-zone soil moisture against crop-specific thresholds to issue one of five actionable daily states: <em>Urgent Irrigation</em>, <em>Irrigation Needed</em>, <em>Do Not Irrigate</em> (&ge;5 mm rain forecasted within 48h), <em>Heat / Cold Wave</em>, or <em>All Good</em>, alongside estimated daily irrigation volume in <code>L/m&sup2;</code>.</li>
+  <li><strong>Smart Crop Rotation Engine:</strong> Checks climatic suitability and prevents consecutive planting of conflicting botanical families (e.g., <em>Poaceae &rarr; Poaceae</em> such as Maize after Wheat, or <em>Solanaceae &rarr; Solanaceae</em>) while recommending climatically compatible alternatives across Egyptian governorates, global agricultural hubs, and custom GPS coordinates.</li>
+  <li><strong>PlantDoc AI Vision Doctor &amp; Auto-Escalation:</strong> Accepts camera or gallery leaf photos and classifies conditions across the 27 PlantDoc disease/healthy classes via multimodal Gemini Vision (with deterministic local PlantDoc fallback offline). Whenever model confidence drops below <strong>75%</strong>, infection severity is high, or the crop lies outside PlantDoc's 11-crop leaf scope (e.g., Wheat, Cotton, Olive), Terra Space automatically escalates the case to the nearest matched agronomist.</li>
+  <li><strong>Geo-Matched Agronomist Portal (Haversine):</strong> Ranks agricultural engineers across 5 specialties (Plant Pathology, Field Crops, Vegetables, Fruits &amp; Orchards, Irrigation &amp; Soil) using Haversine great-circle distance from the farmer's coordinates. Engineers can register, inspect live NASA telemetry for their assigned farmer, and send treatment advice directly.</li>
+  <li><strong>Local &amp; Global Bilingual Voice Companion:</strong> Supports one-tap switching between Local Mode (Egyptian Arabic, RTL layout, <code>ar-EG</code> speech recognition and <code>ar-EG-ShakirNeural</code> neural speech) and Global Mode (English, LTR layout, <code>en-US</code> STT and <code>en-US-GuyNeural</code> TTS), backed by BM25 RAG and persistent per-farmer chat memory.</li>
+</ul>
+
+<h3>Tools, Languages, Hardware &amp; Software Stack</h3>
+<ul>
+  <li><strong>Frontend Mobile &amp; Web App:</strong> Flutter / Dart (Material UI, Provider state management, <code>speech_to_text</code>, <code>flutter_tts</code>, <code>image_picker</code>, <code>geolocator</code>, <code>shared_preferences</code>, <code>url_launcher</code>), packaged as both an Android release APK (<code>52.2 MB</code>) and a responsive Web build.</li>
+  <li><strong>Backend API &amp; Storage:</strong> Python 3 with FastAPI, Uvicorn, HTTPX/Requests, SQLite (<code>smartcrop.db</code> for users, consultations, escalations, and persistent chat/memory), <code>rank-bm25</code> (<code>BM25Okapi</code>), and <code>edge-tts</code>.</li>
+  <li><strong>Hardware Requirements:</strong> Standard Android smartphone (camera + microphone + GPS optional) or any desktop/mobile web browser; Python 3 backend server with internet access for NASA POWER, Open-Meteo, Gemini API, and Edge-TTS.</li>
+</ul>
+
+<h3>Working Features &amp; Verification Evidence vs. Limitations &amp; Future Plans</h3>
+<div class="grid-2">
+  <div class="box">
+    <strong>Verified Working Features (Tested Evidence):</strong>
+    <ul>
+      <li>All core engine integration checks passed in <code>smart_crop_backend/test_core.py</code> (5-state NASA irrigation in AR &amp; EN, Haversine matching, PlantDoc confidence escalation &amp; out-of-scope referral, BM25 RAG + Gemini multi-turn memory, English &amp; Arabic voice generation).</li>
+      <li>Flutter static analyzer returned 0 errors/warnings; <strong>8/8</strong> unit and widget tests passed in <code>test/widget_test.dart</code> (covering rotation conflicts, PlantDoc escalation, honest connection errors, single language toggle &amp; UI switch to English).</li>
+      <li>Verified Android release APK build (<code>54,708,929</code> bytes) and production Web bundle.</li>
+    </ul>
+  </div>
+  <div class="warn">
+    <strong>Current Limitations &amp; Future Plans:</strong>
+    <ul>
+      <li><strong>Limitations:</strong> Local SQLite DB &amp; OTP demo code (<code>1234</code>) serve rapid judging; browser autoplay rules require one click to unlock audio on web; offline deterministic fallback uses filename/hash heuristics over 11 PlantDoc crops when cloud connectivity drops.</li>
+      <li><strong>Future Plans:</strong> Cloud hosting on managed PostgreSQL + FastAPI containers, live SMS OTP verification, Sentinel-2 NDVI &amp; SoilGrids raster fusion, and embedded TensorFlow Lite PlantDoc inference for zero-connectivity rural zones.</li>
+    </ul>
+  </div>
+</div>
+
+<h2 class="page-break">3. NASA Data &amp; Resources</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Resource Name</th>
+      <th>Mission / Product &amp; Endpoint</th>
+      <th>Parameters, Scope &amp; Processing Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>NASA POWER API</strong><br>(Prediction Of Worldwide Energy Resources)</td>
+      <td>NASA Langley Research Center (LaRC)<br>Agroclimatology (<code>AG</code>) Community:<br><code>https://power.larc.nasa.gov/api/temporal/daily/point</code><br><code>https://power.larc.nasa.gov/api/temporal/climatology/point</code></td>
+      <td>
+        <strong>Area &amp; Period:</strong> Exact farmer <code>lat/lon</code> point (Egypt &amp; global coordinates), trailing 30-day &amp; 7-day daily series + long-term monthly climatology fallback.<br>
+        <strong>Parameters Used:</strong> <code>T2M</code> (mean 2m temp), <code>T2M_MAX</code>, <code>T2M_MIN</code>, <code>RH2M</code> (relative humidity), <code>GWETROOT</code> (root-zone soil wetness), and <code>PRECTOTCORR</code> (corrected precipitation).<br>
+        <strong>Processing:</strong> Filters sentinel <code>-999</code> values in <code>nasa_engine.py</code>, aggregates mean/max/min/total metrics, feeds crop-rotation suitability scoring and the 5-state irrigation engine.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>4. Space Agency Partner Data, Open Datasets &amp; References</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Source / Package</th>
+      <th>Link &amp; License / Attribution</th>
+      <th>Usage in Terra Space</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Open-Meteo Forecast API</strong></td>
+      <td><code>https://api.open-meteo.com/v1/forecast</code><br>Attribution: Open-Meteo (CC BY 4.0)</td>
+      <td>Provides current weather, elevation, and 3-day daily precipitation &amp; temperature forecasts to detect upcoming rain (&ge;5 mm in 48h to skip irrigation) and heat/frost waves.</td>
+    </tr>
+    <tr>
+      <td><strong>PlantDoc Classification Dataset</strong></td>
+      <td><code>https://www.kaggle.com/datasets/nirmalsankalana/plantdoc-dataset</code><br>Public Kaggle Dataset (CC0 / Research attribution)</td>
+      <td>Defines our 27 plant disease and healthy classes across 11 horticultural &amp; grain crops, disease symptoms metadata, and safe organic/chemical treatment references.</td>
+    </tr>
+    <tr>
+      <td><strong>Open-Source Frameworks</strong></td>
+      <td>Flutter (BSD-3-Clause), <code>rank-bm25</code> (Apache-2.0), <code>requests</code> (Apache-2.0), <code>httpx</code> &amp; <code>python-dotenv</code> (BSD-3-Clause), <code>edge-tts</code> (LGPLv3 / Microsoft Neural Voices), FastAPI &amp; Uvicorn (open-source Python ASGI stack)</td>
+      <td>Cross-platform Android/Web UI rendering, REST API serving, BM25 sparse retrieval indexing over agronomic knowledge chunks, and natural neural speech synthesis.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>5. Use of Artificial Intelligence / Super Intelligence (AI/SI) Disclosure</h2>
+<div class="box">
+  <p>In full compliance with the 2026 NASA Space Apps AI/SI guidelines, Team <strong>NOVERA</strong> discloses all AI tools used and all affected components:</p>
+  <ul>
+    <li><strong>Google Gemini REST API (Gemini Flash-Lite / Vision &amp; Chat models):</strong> Used inside <code>smart_crop_backend/vision_engine.py</code> to visually classify uploaded plant photos against PlantDoc categories and inside <code>voice_assistant_engine.py</code> to generate concise farmer advice grounded strictly in retrieved NASA telemetry and BM25 agronomic chunks. Prompts explicitly forbid inventing telemetry numbers.</li>
+    <li><strong>BM25 Sparse Retrieval (<code>rank-bm25</code>):</strong> Indexes curated agricultural knowledge docs and PlantDoc disease metadata (<code>rag_engine.py</code>) with colloquial Egyptian-to-agronomic synonym expansion so LLM answers cite grounded practices.</li>
+    <li><strong>Neural Speech Synthesis (<code>edge-tts</code>) &amp; Speech-to-Text:</strong> Used in <code>tts_service.py</code> and <code>voice_service.dart</code> to convert verified text responses into spoken Egyptian Arabic (<code>ar-EG-ShakirNeural</code>) or English (<code>en-US-GuyNeural</code>) audio output (<strong>Audio acknowledgement:</strong> all spoken responses synthesize verified text generated from NASA/PlantDoc backend modules and include descriptive text alongside audio).</li>
+    <li><strong>AI-Assisted Development Disclosure (Code/Data):</strong> AI coding assistants assisted with software refactoring, bilingual localization scaffolding, and test automation. Every line was verified against live API responses, backend integration suites (<code>test_core.py</code>), and Flutter widget tests (<code>widget_test.dart</code>).</li>
+    <li><strong>NASA Branding Compliance:</strong> No NASA logos, flags, insignias, or mission identifiers were generated or modified by AI. Terra Space uses an original custom sprout-and-orbit logo designed independently.</li>
+  </ul>
+</div>
+
+</body>
+</html>

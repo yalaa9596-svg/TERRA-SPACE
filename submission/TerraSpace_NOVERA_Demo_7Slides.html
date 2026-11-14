@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Terra Space — 7-Slide Demo (Team NOVERA)</title>
+<style>
+  @page {
+    size: 1280px 720px;
+    margin: 0;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #0f172a;
+    background: #ffffff;
+  }
+  .slide {
+    width: 1280px;
+    height: 720px;
+    padding: 44px 56px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+    break-after: page;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .slide:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+  .slide-dark {
+    background: linear-gradient(135deg, #0b3d17 0%, #166534 55%, #0d4b3e 100%);
+    color: #ffffff;
+  }
+  .slide-light {
+    background: linear-gradient(180deg, #f8fafc 0%, #eef7f0 100%);
+  }
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid rgba(27, 94, 32, 0.18);
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+  }
+  .slide-dark .top-bar {
+    border-bottom-color: rgba(255,255,255,0.2);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 800;
+    font-size: 18px;
+  }
+  .brand img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1.5px solid rgba(255,255,255,0.45);
+  }
+  .pill {
+    background: #fbbf24;
+    color: #0e3e12;
+    font-weight: 800;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 999px;
+  }
+  .pill-green {
+    background: #dcfce7;
+    color: #166534;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 999px;
+  }
+  h1.title {
+    font-size: 56px;
+    margin: 12px 0;
+    line-height: 1.08;
+    font-weight: 900;
+  }
+  h2.stitle {
+    font-size: 34px;
+    margin: 0 0 14px 0;
+    color: #14532d;
+    font-weight: 800;
+  }
+  .slide-dark h2.stitle { color: #fde68a; }
+  .lead {
+    font-size: 22px;
+    line-height: 1.45;
+    max-width: 920px;
+    opacity: 0.95;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    flex: 1;
+    align-items: stretch;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    flex: 1;
+    align-items: stretch;
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 24px;
+    border: 1.5px solid #d1fae5;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .card-dark {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 18px;
+    padding: 22px;
+    color: #ffffff;
+  }
+  .card h3 {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    color: #166534;
+  }
+  .card-dark h3 {
+    color: #fde68a;
+    margin: 0 0 10px 0;
+    font-size: 20px;
+  }
+  .card p, .card li, .card-dark p, .card-dark li {
+    font-size: 16.5px;
+    line-height: 1.5;
+    margin: 0 0 8px 0;
+  }
+  .hero-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex: 1;
+  }
+  .hero-logo {
+    width: 260px;
+    height: 260px;
+    border-radius: 42px;
+    border: 4px solid rgba(255,255,255,0.35);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  }
+  .state-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-top: 10px;
+  }
+  .state-pill {
+    border-radius: 14px;
+    padding: 14px 12px;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    opacity: 0.72;
+    margin-top: 14px;
+  }
+  .metric-num {
+    font-size: 38px;
+    font-weight: 900;
+    color: #15803d;
+    margin-bottom: 4px;
+  }
+  .flow-box {
+    background: #0f3d2e;
+    color: #ffffff;
+    border-radius: 16px;
+    padding: 18px 22px;
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .arrow { color: #fbbf24; font-size: 24px; }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: TITLE & TEAM -->
+<div class="slide slide-dark">
+  <div class="top-bar">
+    <div class="brand">
+      <img src="terra_logo.png" alt="Logo">
+      <span>TERRA SPACE — NASA SPACE APPS CAIRO 2026</span>
+    </div>
+    <span class="pill">Team NOVERA • Slide 1 / 7</span>
+  </div>
+  <div class="hero-wrap">
+    <div>
+      <span class="pill" style="font-size:15px;">Challenge: Field Shift — Adapting Farms with NASA</span>
+      <h1 class="title">Terra Space</h1>
+      <p class="lead">
+        Bilingual (Arabic &amp; English) Voice &amp; Vision Farming Companion uniting <strong>NASA POWER</strong>
+        climate telemetry, <strong>Open-Meteo</strong> forecasts, <strong>PlantDoc AI</strong> triage, and
+        GPS-matched <strong>Agricultural Engineers</strong>.
+      </p>
+      <div class="card-dark" style="margin-top: 22px;">
+        <h3>Team NOVERA</h3>
+        <p><strong>Team Members:</strong> [INSERT TEAM MEMBERS' FULL NAMES HERE]</p>
+        <p style="margin-bottom:0;"><strong>Platforms:</strong> Android Mobile App (APK) + Responsive Web + FastAPI Cloud Engine</p>
+      </div>
+    </div>
+    <img class="hero-logo" src="terra_logo.png" alt="Terra Space Official Logo">
+  </div>
+  <div class="footer">
+    <span>NASA Space Apps Challenge 2026</span>
+    <span>Field Shift: Adapting Farms with NASA</span>
+  </div>
+</div>
+
+<!-- SLIDE 2: THE PROBLEM -->
+<div class="slide slide-light">
+  <div class="top-bar">
+    <div class="brand"><img src="terra_logo.png" alt="Logo"><span>TERRA SPACE</span></div>
+    <span class="pill-green">Slide 2 / 7 — The Problem</span>
+  </div>
+  <h2 class="stitle">Why Farmers Lose Yield During Climate &amp; Field Shifts</h2>
+  <div class="grid-3">
+    <div class="card">
+      <div class="metric-num">01</div>
+      <h3>Guesswork Irrigation</h3>
+      <p>Over-watering before unexpected rainfall wastes scarce water, while heat spikes dry root-zone moisture faster than traditional schedules adapt.</p>
+    </div>
+    <div class="card">
+      <div class="metric-num">02</div>
+      <h3>Crop Rotation Conflicts</h3>
+      <p>Planting same-family crops consecutively (e.g., Wheat after Maize) depletes soil nutrients and compounds soil-borne pests.</p>
+    </div>
+    <div class="card">
+      <div class="metric-num">03</div>
+      <h3>Language &amp; Expert Gap</h3>
+      <p>Scientific dashboards are too complex for local growers, and farmers struggle to reach nearby specialists quickly when leaf disease strikes.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Team NOVERA — Terra Space</span><span>Problem Statement</span></div>
+</div>
+
+<!-- SLIDE 3: HOW OUR SOLUTION WORKS (ARCHITECTURE) -->
+<div class="slide slide-light">
+  <div class="top-bar">
+    <div class="brand"><img src="terra_logo.png" alt="Logo"><span>TERRA SPACE</span></div>
+    <span class="pill-green">Slide 3 / 7 — How It Works</span>
+  </div>
+  <h2 class="stitle">Unified Architecture: From Satellite &amp; Camera to Farmer Action</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Farmer Experience (Android &amp; Web)</h3>
+      <ul>
+        <li><strong>One-Tap Local &harr; Global Switch:</strong> Egyptian Arabic (RTL, <code>ar-EG</code> voice) or English (LTR, <code>en-US</code> voice) synced across every tab.</li>
+        <li><strong>Location-Aware Onboarding:</strong> GPS coordinates, Egyptian governorates, or global agricultural hubs.</li>
+        <li><strong>Voice &amp; Camera First:</strong> Farmers ask naturally by voice or snap a leaf photo—no complex charts required to understand next steps.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Real-Time Intelligence Backend (FastAPI)</h3>
+      <ul>
+        <li><strong>Climate &amp; Irrigation Engine:</strong> Pulls 6 NASA POWER variables + Open-Meteo 48h forecast to compute actionable irrigation depth (<code>L/m&sup2;</code>).</li>
+        <li><strong>Vision &amp; Escalation Engine:</strong> Analyzes photos across 27 PlantDoc classes via Gemini Vision &amp; deterministic fallback; auto-escalates under 75% confidence.</li>
+        <li><strong>Haversine &amp; BM25 RAG:</strong> Matches nearest certified engineer by specialty and grounds chat replies in verified agronomy data.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="flow-box">
+    <span>Farmer GPS + Leaf Photo + Voice</span>
+    <span class="arrow">&rarr;</span>
+    <span>NASA POWER + Open-Meteo + PlantDoc AI</span>
+    <span class="arrow">&rarr;</span>
+    <span>Voice Advice + 5-State Irrigation + Nearest Engineer Escalation</span>
+  </div>
+  <div class="footer"><span>Team NOVERA — Terra Space</span><span>Architecture &amp; Prototype Walkthrough</span></div>
+</div>
+
+<!-- SLIDE 4: NASA 5-STATE IRRIGATION & ROTATION PROTOTYPE -->
+<div class="slide slide-light">
+  <div class="top-bar">
+    <div class="brand"><img src="terra_logo.png" alt="Logo"><span>TERRA SPACE</span></div>
+    <span class="pill-green">Slide 4 / 7 — Live Prototype Features</span>
+  </div>
+  <h2 class="stitle">5-State NASA Irrigation Advisor &amp; Crop Rotation Engine</h2>
+  <div class="grid-2" style="flex: 0 0 auto;">
+    <div class="card">
+      <h3>Botanical Family &amp; Climate Matcher</h3>
+      <p>Combines 30-day <code>T2M</code>, <code>RH2M</code>, and <code>GWETROOT</code> against crop bounds. Flags family conflicts immediately (e.g., <em>Poaceae &rarr; Poaceae</em>) and suggests top climate-fit alternatives like Clover, Faba Bean, or Tomato.</p>
+    </div>
+    <div class="card">
+      <h3>Proactive Weather &amp; Water Alerts</h3>
+      <p>Translates raw satellite telemetry into simple liters-per-square-meter (<code>L/m&sup2;</code>) guidance and audible alerts in spoken Egyptian Arabic or English.</p>
+    </div>
+  </div>
+  <div class="state-row">
+    <div class="state-pill" style="background:#b91c1c;"><strong>1. Urgent Irrigation</strong><br>Dry root zone + heat &gt; opt +3&deg;C &rarr; Water immediately (~L/m&sup2;).</div>
+    <div class="state-pill" style="background:#d97706;"><strong>2. Irrigation Needed</strong><br>Low soil moisture or dry heat &rarr; Schedule watering today.</div>
+    <div class="state-pill" style="background:#1d4ed8;"><strong>3. Do Not Irrigate</strong><br>&ge;5 mm rain forecasted in 48h &rarr; Skip watering &amp; save water.</div>
+    <div class="state-pill" style="background:#6d28d9;"><strong>4. Heat / Cold Wave</strong><br>Exceeds crop temp limits &rarr; Mulching &amp; protective watering.</div>
+    <div class="state-pill" style="background:#15803d;"><strong>5. All Good</strong><br>Soil wetness &amp; temperature balanced &rarr; Field is healthy.</div>
+  </div>
+  <div class="footer"><span>Team NOVERA — Terra Space</span><span>Irrigation &amp; Rotation Engine</span></div>
+</div>
+
+<!-- SLIDE 5: PLANTDOC AI & ENGINEER PORTAL -->
+<div class="slide slide-light">
+  <div class="top-bar">
+    <div class="brand"><img src="terra_logo.png" alt="Logo"><span>TERRA SPACE</span></div>
+    <span class="pill-green">Slide 5 / 7 — Vision Doctor &amp; Engineers</span>
+  </div>
+  <h2 class="stitle">PlantDoc Disease Triage &amp; Human-in-the-Loop Escalation</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h3>PlantDoc Vision &amp; Safe Thresholding</h3>
+      <ul>
+        <li>Supports <strong>27 disease &amp; healthy classes</strong> across 11 PlantDoc crops using multimodal Gemini Vision and deterministic fallback.</li>
+        <li>Delivers observed symptoms, safe organic treatment, chemical recommendations, and spoken audio guidance.</li>
+        <li><strong>Automatic Safety Escalation:</strong> Any diagnosis below <strong>75% confidence</strong>, severe infection, or out-of-scope crop triggers immediate referral.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Geo-Matched Engineer Portal (Haversine)</h3>
+      <ul>
+        <li>Ranks agronomists by exact Haversine distance (km) and specialty (Plant Pathology, Field Crops, Vegetables, Fruits, Irrigation).</li>
+        <li>Farmers send consultations or tap direct call; escalated PlantDoc cases auto-appear in the engineer's queue.</li>
+        <li>Engineers inspect full <code>T2M</code>, <code>GWETROOT</code>, and <code>PRECTOTCORR</code> NASA telemetry before replying with prescriptions.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer"><span>Team NOVERA — Terra Space</span><span>Human-AI Collaboration</span></div>
+</div>
+
+<!-- SLIDE 6: NASA DATA & PARTNER SOURCES -->
+<div class="slide slide-light">
+  <div class="top-bar">
+    <div class="brand"><img src="terra_logo.png" alt="Logo"><span>TERRA SPACE</span></div>
+    <span class="pill-green">Slide 6 / 7 — NASA &amp; Partner Data</span>
+  </div>
+  <h2 class="stitle">Grounded Scientific &amp; AI Data Pipeline</h2>
+  <div class="grid-3">
+    <div class="card">
+      <h3>NASA POWER API</h3>
+      <p><strong>LaRC Agroclimatology (<code>AG</code>):</strong> Daily &amp; Climatology point queries at farmer GPS for <code>T2M</code>, <code>T2M_MAX</code>, <code>T2M_MIN</code>, <code>RH2M</code>, <code>GWETROOT</code>, and <code>PRECTOTCORR</code>.</p>
+    </div>
+    <div class="card">
+      <h3>Partner &amp; Open Data</h3>
+      <p><strong>Open-Meteo API:</strong> 48–72h rainfall and extreme temp forecast.<br><br><strong>PlantDoc Dataset (Kaggle):</strong> 27 disease &amp; healthy classes powering leaf diagnosis.</p>
+    </div>
+    <div class="card">
+      <h3>Responsible AI / SI</h3>
+      <p><strong>Gemini Vision &amp; Chat + BM25 RAG + Edge-TTS:</strong> Strictly grounded in retrieved NASA values and memory; audio &amp; code AI usage transparently disclosed.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Team NOVERA — Terra Space</span><span>Data Attribution</span></div>
+</div>
+
+<!-- SLIDE 7: IMPACT, VERIFICATION & BENEFIT -->
+<div class="slide slide-dark">
+  <div class="top-bar">
+    <div class="brand"><img src="terra_logo.png" alt="Logo"><span>TERRA SPACE</span></div>
+    <span class="pill">Slide 7 / 7 — Impact &amp; Verification</span>
+  </div>
+  <h2 class="stitle">Adapting Every Farm — Locally &amp; Globally</h2>
+  <div class="grid-3">
+    <div class="card-dark">
+      <h3>Water &amp; Crop Savings</h3>
+      <p>Halts unnecessary watering before forecasted rainfall (&ge;5 mm) and computes exact daily <code>L/m&sup2;</code> targets from root-zone moisture.</p>
+    </div>
+    <div class="card-dark">
+      <h3>Zero-Barrier Access</h3>
+      <p>Farmers simply speak in Egyptian Arabic or English—or upload a leaf photo—getting spoken answers and instant agronomist backup.</p>
+    </div>
+    <div class="card-dark">
+      <h3>Tested &amp; Shipped</h3>
+      <p>Verified end-to-end backend tests (NASA, PlantDoc, Bilingual Gemini RAG) + 8/8 passing Flutter unit/widget tests + compiled Android APK &amp; Web app.</p>
+    </div>
+  </div>
+  <div class="flow-box" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.28);">
+    <span>Thank You! Team NOVERA — Terra Space</span>
+    <span style="color:#fde68a;">Field Shift: Adapting Farms with NASA</span>
+  </div>
+  <div class="footer"><span>NASA Space Apps Cairo 2026</span><span>End of 7-Slide Demo</span></div>
+</div>
+
+</body>
+</html>
+

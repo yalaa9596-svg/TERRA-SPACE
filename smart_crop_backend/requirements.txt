@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+requests
+httpx
+python-dotenv
+rank-bm25
+edge-tts

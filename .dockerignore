@@ -1,0 +1,14 @@
+.git/
+.env
+*.env
+smart_crop_backend/.env
+smart_crop_backend/*.env
+smart_crop_backend/smartcrop.db
+smart_crop_backend/*.db
+smart_crop_backend/generated_audio/
+smart_crop_backend/__pycache__/
+smart_crop_app/
+submission/
+*.apk
+*.zip
+
